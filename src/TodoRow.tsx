@@ -6,8 +6,9 @@ export interface Props {
 }
 
 export const TodoRow = ({children, checked}: Props) => {
-    const checkbox = checked ? <input type="checkbox" id="id" value="HTML" checked></input>
-        : <input type="checkbox" id="id" value="HTML"></input>
+    const checkbox = checked ?
+        <input type="checkbox" id="id" value="HTML" defaultChecked></input> :
+        <input type="checkbox" id="id" value="HTML"></input>
     return (
         <>
             {checkbox}

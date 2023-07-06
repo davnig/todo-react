@@ -1,12 +1,19 @@
 import './App.css'
 import {TodoTable} from "./TodoTable.tsx";
 import {TodoCreationBar} from "./TodoCreationBar.tsx";
+import {useState} from "react";
 
 function App() {
+    const [todos, setTodos] = useState(defaultTodoList)
+    const handleAddTodo = (todo: Todo) => {
+        console.log("new todo to add: " + todo.text)
+        const newTodos = [...todos, todo]
+        setTodos(newTodos)
+    }
     return (
         <>
             <h1>{"My ToDo list"}</h1>
-            <TodoCreationBar/>
+            <TodoCreationBar onAdd={handleAddTodo}/>
             <TodoTable todos={todos}></TodoTable>
         </>
     )
@@ -14,16 +21,15 @@ function App() {
 
 export default App
 
-const todos: Todo[] = [
-    {id: 1, done: true, text: "Todo #1"},
-    {id: 2, done: false, text: "Todo #2"},
-    {id: 3, done: true, text: "Todo #3"},
-    {id: 4, done: false, text: "Todo #4"},
-    {id: 5, done: false, text: "Todo #5"}
-]
-
 export interface Todo {
-    id: number;
     done: boolean;
     text: string;
 }
+
+const defaultTodoList: Todo[] = [
+    {done: true, text: "Todo #1"},
+    {done: false, text: "Todo #2"},
+    {done: true, text: "Todo #3"},
+    {done: false, text: "Todo #4"},
+    {done: false, text: "Todo #5"}
+]
