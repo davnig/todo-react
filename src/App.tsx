@@ -1,21 +1,29 @@
 import './App.css'
-import {TodoRow} from "./TodoRow.tsx";
+import {TodoTable} from "./TodoTable.tsx";
+import {TodoCreationBar} from "./TodoCreationBar.tsx";
 
 function App() {
     return (
         <>
-            {todo.map((todo) =>
-                <TodoRow checked={todo.done}>{todo.text}</TodoRow>)}
+            <h1>{"My ToDo list"}</h1>
+            <TodoCreationBar/>
+            <TodoTable todos={todos}></TodoTable>
         </>
     )
 }
 
 export default App
 
-const todo = [
-    {done: true, text: "Todo #1"},
-    {done: false, text: "Todo #2"},
-    {done: true, text: "Todo #3"},
-    {done: false, text: "Todo #4"},
-    {done: false, text: "Todo #5"}
+const todos: Todo[] = [
+    {id: 1, done: true, text: "Todo #1"},
+    {id: 2, done: false, text: "Todo #2"},
+    {id: 3, done: true, text: "Todo #3"},
+    {id: 4, done: false, text: "Todo #4"},
+    {id: 5, done: false, text: "Todo #5"}
 ]
+
+export interface Todo {
+    id: number;
+    done: boolean;
+    text: string;
+}
