@@ -6,15 +6,22 @@ import {useState} from "react";
 function App() {
     const [todos, setTodos] = useState(defaultTodoList)
     const handleAddTodo = (todo: Todo) => {
-        console.log("new todo to add: " + todo.text)
         const newTodos = [...todos, todo]
+        setTodos(newTodos)
+    }
+    const handleTodoChange = (value: string) => {
+        const newTodos = [...todos]
+        const changedIndex = newTodos.findIndex((todo) => todo.text === value);
+        if (changedIndex !== -1) {
+            newTodos[changedIndex].done = !newTodos[changedIndex].done
+        }
         setTodos(newTodos)
     }
     return (
         <>
             <h1>{"My ToDo list"}</h1>
             <TodoCreationBar onAdd={handleAddTodo}/>
-            <TodoTable todos={todos}></TodoTable>
+            <TodoTable todos={todos} onTodoChange={handleTodoChange}></TodoTable>
         </>
     )
 }

@@ -1,18 +1,23 @@
-import {ReactNode} from "react";
-
 export interface Props {
-    children: ReactNode;
-    checked: boolean
+    label: string;
+    checked: boolean,
+    onChange: (value: string) => void
 }
 
-export const TodoRow = ({children, checked}: Props) => {
+export const TodoRow = ({label, checked, onChange}: Props) => {
     const checkbox = checked ?
-        <input type="checkbox" id="id" value="HTML" defaultChecked></input> :
-        <input type="checkbox" id="id" value="HTML"></input>
+        <input type="checkbox" id="id" value={label} defaultChecked
+               onChange={(e) => {
+                   onChange(e.target.value)
+               }}></input> :
+        <input type="checkbox" id="id" value={label}
+               onChange={(e) => {
+                   onChange(e.target.value)
+               }}></input>
     return (
         <>
             {checkbox}
-            <label htmlFor="id">{children}</label>
+            <label htmlFor="id">{label}</label>
             <br/>
         </>
     )
