@@ -1,8 +1,17 @@
-export const TodoRow = () => {
+import {ReactNode} from "react";
+
+export interface Props {
+    children: ReactNode;
+    checked: boolean
+}
+
+export const TodoRow = ({children, checked}: Props) => {
+    const checkbox = checked ? <input type="checkbox" id="id" value="HTML" checked></input>
+        : <input type="checkbox" id="id" value="HTML"></input>
     return (
         <>
-            <input type="checkbox" id="id" value="HTML"></input>
-            <label htmlFor="id">HTML</label>
+            {checkbox}
+            <label htmlFor="id">{children}</label>
             <br/>
         </>
     )
