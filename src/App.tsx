@@ -18,11 +18,11 @@ function App() {
         setTodos(newTodos)
     }
     return (
-        <>
-            <h1>{"My ToDo list"}</h1>
+        <div className="flex flex-col items-center">
+            <h1 className="mb-5">{"My ToDo list"}</h1>
             <TodoCreationBar onAdd={handleAddTodo}/>
             <TodoTable todos={todos} onTodoChange={handleTodoChange}></TodoTable>
-        </>
+        </div>
     )
 }
 

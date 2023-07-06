@@ -15,10 +15,9 @@ export const TodoRow = ({label, checked, onChange}: Props) => {
                    onChange(e.target.value)
                }}></input>
     return (
-        <>
+        <div className="grow space-x-2">
             {checkbox}
             <label htmlFor="id">{label}</label>
-            <br/>
-        </>
+        </div>
     )
 }

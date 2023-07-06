@@ -12,7 +12,7 @@ export const TodoCreationBar = ({onAdd}: Props) => {
         onAdd({done: false, text: todoText})
     }
     return (
-        <>
+        <div className="flex justify-center space-x-3 my-7">
             <input type="text"
                    placeholder="New todo..."
                    value={todoText}
@@ -21,6 +21,6 @@ export const TodoCreationBar = ({onAdd}: Props) => {
                    }}
             ></input>
             <input type="submit" value="Add" onClick={handleOnClick}></input>
-        </>
+        </div>
     )
 }
