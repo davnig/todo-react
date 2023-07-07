@@ -19,7 +19,7 @@ function App() {
     }
     return (
         <div className="flex flex-col items-center">
-            <h1 className="mb-5">{"My ToDo list"}</h1>
+            <h1 className="text-4xl font-bold mt-5 mb-10">{"My ToDo list"}</h1>
             <TodoCreationBar onAdd={handleAddTodo}/>
             <TodoTable todos={todos} onTodoChange={handleTodoChange}></TodoTable>
         </div>
