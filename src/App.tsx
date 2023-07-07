@@ -34,9 +34,7 @@ export interface Todo {
 }
 
 const defaultTodoList: Todo[] = [
-    {done: true, text: "Todo #1"},
-    {done: false, text: "Todo #2"},
-    {done: true, text: "Todo #3"},
-    {done: false, text: "Todo #4"},
-    {done: false, text: "Todo #5"}
+    {done: true, text: "Buy groceries"},
+    {done: false, text: "Go pick up Joe"},
+    {done: true, text: "Bring the keys to Alice"}
 ]

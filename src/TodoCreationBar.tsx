@@ -14,13 +14,16 @@ export const TodoCreationBar = ({onAdd}: Props) => {
     return (
         <div className="flex justify-center space-x-3 my-10">
             <input type="text"
+                   className="p-2 text-lg rounded-lg text-slate-800"
                    placeholder="New todo..."
                    value={todoText}
                    onChange={(e) => {
                        setTodoText(e.target.value)
                    }}
             ></input>
-            <input type="submit" value="Add" onClick={handleOnClick}></input>
+            <button type="button" className="p-2 text-lg bg-slate-900 rounded-lg hover:bg-slate-800"
+                    onClick={handleOnClick}>Add
+            </button>
         </div>
     )
 }
