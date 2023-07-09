@@ -12,3 +12,7 @@ body {
     background: rgb(0, 105, 106);
     background: linear-gradient(180deg, rgba(0, 105, 106, 1) 21%, rgba(207, 169, 88, 1) 100%);
 }
+
+input[type="checkbox"]:checked {
+    accent-color: #1e293b;
+}

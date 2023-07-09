@@ -3,10 +3,11 @@ import {Todo} from "./App.tsx";
 
 export interface Props {
     todos: Todo[]
-    onTodoChange: (value: string) => void
+    onTodoChange: (label: string) => void
+    onTodoDelete: (label: string) => void
 }
 
-export const TodoTable = ({todos, onTodoChange}: Props) => {
+export const TodoTable = ({todos, onTodoChange, onTodoDelete}: Props) => {
     const todoDone = todos.filter((todo) => todo.done)
     const todoNotDone = todos.filter((todo) => !todo.done)
     return (
@@ -15,15 +16,16 @@ export const TodoTable = ({todos, onTodoChange}: Props) => {
                 <h3 className=" text-2xl font-bold mb-3">To do</h3>
                 <div className="flex flex-col items-start w-full">
                     {todoNotDone.map((todo) =>
-                        <TodoRow key={todo.text} checked={todo.done} onChange={onTodoChange}
-                                 label={todo.text}></TodoRow>)}
+                        <TodoRow key={todo.text} checked={todo.done} label={todo.text}
+                                 onCheckboxChange={onTodoChange} onDelete={onTodoDelete}/>)}
                 </div>
             </div>
             <div className="flex flex-col items-center">
                 <h3 className="text-2xl font-bold mt-7 mb-3">Done</h3>
                 <div className="flex flex-col items-start w-full space-y-2 text-gray-400">
                     {todoDone.map((todo) =>
-                        <TodoRow key={todo.text} checked={todo.done} onChange={onTodoChange} label={todo.text}/>)}
+                        <TodoRow key={todo.text} checked={todo.done} label={todo.text}
+                                 onCheckboxChange={onTodoChange} onDelete={onTodoDelete}/>)}
                 </div>
             </div>
         </div>

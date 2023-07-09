@@ -10,12 +10,16 @@ function App() {
         const newTodos = [...todos, todo]
         setTodos(newTodos)
     }
-    const handleTodoChange = (value: string) => {
+    const handleTodoChange = (label: string) => {
         const newTodos = [...todos]
-        const changedIndex = newTodos.findIndex((todo) => todo.text === value);
-        if (changedIndex !== -1) {
-            newTodos[changedIndex].done = !newTodos[changedIndex].done
+        const indexToChange = newTodos.findIndex((todo) => todo.text === label);
+        if (indexToChange !== -1) {
+            newTodos[indexToChange].done = !newTodos[indexToChange].done
         }
+        setTodos(newTodos)
+    }
+    const handleTodoDelete = (label: string) => {
+        const newTodos = todos.filter((todo) => todo.text !== label)
         setTodos(newTodos)
     }
     return (
@@ -23,7 +27,7 @@ function App() {
             <div className="grow flex flex-col items-center">
                 <h1 className="text-4xl font-bold mt-5 mb-10">{"My ToDo list"}</h1>
                 <TodoCreationBar onAdd={handleAddTodo}/>
-                <TodoTable todos={todos} onTodoChange={handleTodoChange}></TodoTable>
+                <TodoTable todos={todos} onTodoChange={handleTodoChange} onTodoDelete={handleTodoDelete}></TodoTable>
             </div>
             <Footer/>
         </div>
