@@ -3,4 +3,6 @@
 My first web application developed in [React](https://react.dev/) and styled
 with [TailwindCSS](https://tailwindcss.com/).
 
-![Homepage](./src/assets/homepage.png)
+<p align="center">
+  <img src="./src/assets/homepage.png" />
+</p>
