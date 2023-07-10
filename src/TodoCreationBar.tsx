@@ -1,16 +1,15 @@
-import {useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import {Todo} from "./App.tsx";
 import {FiPlus} from "react-icons/fi";
 
 export interface Props {
-    onAdd: (todo: Todo) => void
+    onAdd: Dispatch<SetStateAction<Todo[]>>;
 }
 
-export const TodoCreationBar = ({onAdd}: Props) => {
+export function TodoCreationBar({onAdd}: Props) {
     const [todoText, setTodoText] = useState('')
-    const handleOnClick = () => {
-        setTodoText('')
-        onAdd({done: false, text: todoText})
+    const handleOnAdd = () => {
+        onAdd((prevState) => [...prevState, {done: false, text: todoText}])
     }
     return (
         <div className="flex justify-center space-x-3 my-10">
@@ -23,7 +22,10 @@ export const TodoCreationBar = ({onAdd}: Props) => {
                    }}
             ></input>
             <button type="button" className="p-3 text-lg bg-slate-900 rounded-lg hover:bg-slate-800"
-                    onClick={handleOnClick}><FiPlus/>
+                    onClick={() => {
+                        handleOnAdd()
+                        setTodoText('')
+                    }}><FiPlus/>
             </button>
         </div>
     )
